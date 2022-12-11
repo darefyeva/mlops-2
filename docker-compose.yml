@@ -1,0 +1,16 @@
+version: '3'
+services:
+  flask:
+    build: ./app
+    container_name: hwmlops
+    environment:
+      - FLASK_ENV=development
+      - PYTHONUNBUFFERED=True
+
+    restart: on-failure
+    volumes:
+      - ./app:/app
+
+    ports:
+      - "5000:5000"
+    command: python main.py
